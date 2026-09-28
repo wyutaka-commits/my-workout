@@ -1,27 +1,29 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#111827">
-  <meta name="description" content="目標体重に向けた自重トレーニング・習慣化アプリ">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="icon.svg">
-  <title>MY WORKOUT</title>
-  <style>
-    :root{--bg:#f5f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#111827;--soft:#eef2ff;--ok:#166534;--warn:#92400e;--danger:#991b1b;}
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif;background:var(--bg);color:var(--text)}
-    .app{max-width:760px;margin:0 auto;padding:18px 16px 90px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{font-weight:800;letter-spacing:.08em;font-size:18px}.pill{font-size:12px;padding:7px 10px;border-radius:999px;background:var(--soft)}
-    .hero{background:var(--accent);color:white;border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(17,24,39,.15)}.hero .small{opacity:.75;font-size:13px}.weight{font-size:42px;font-weight:800;line-height:1;margin:8px 0}.target{opacity:.86}.bar{height:10px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden;margin:16px 0 10px}.bar span{display:block;height:100%;background:white;border-radius:999px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.stat{background:rgba(255,255,255,.08);border-radius:14px;padding:10px}.stat b{display:block;font-size:17px}.stat small{opacity:.7}
-    .section{margin-top:18px}.section h2{font-size:17px;margin:0 0 10px}.grid{display:grid;gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.btn{border:0;border-radius:14px;padding:12px 14px;font-weight:700;cursor:pointer}.primary{background:var(--accent);color:white}.secondary{background:#eef2f7;color:var(--text)}.ghost{background:transparent;color:var(--muted);padding:6px}.btn:disabled{opacity:.5;cursor:not-allowed}
-    .workout-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.workout-item:last-child{border-bottom:0}.check{width:22px;height:22px}.exercise{flex:1}.exercise b{display:block}.exercise span{font-size:13px;color:var(--muted)}
-    .timer{font-variant-numeric:tabular-nums;font-size:52px;font-weight:800;text-align:center;margin:10px 0 16px}.timer-actions{display:flex;gap:8px}.timer-actions .btn{flex:1}
-    input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:white;font-size:16px}label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}
-    .mini{font-size:12px;color:var(--muted)}.progress-wrap{display:flex;align-items:center;gap:10px}.progress{flex:1;height:8px;background:#edf0f4;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:#111827}.history-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.history-row:last-child{border-bottom:0}.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line)}.navin{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px}.nav button{border:0;background:none;padding:8px 2px;color:var(--muted);font-weight:700;font-size:12px}.nav button.active{color:var(--text)}
-    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:78px;background:#111827;color:#fff;padding:11px 14px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1}
-    .hidden{display:none!important}.overlay{position:fixed;inset:0;background:rgba(15,23,42,.58);display:flex;align-items:center;justify-content:center;padding:18px;z-index:50}.modal{width:min(560px,100%);background:white;border-radius:24px;padding:22px;max-height:90vh;overflow:auto}.modal h2{margin:6px 0 8px;font-size:22px}.modal p{line-height:1.6}.note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:14px;padding:12px;font-size:13px;line-height:1.55}
-    @media (max-width:520px){.formgrid{grid-template-columns:1fr}.formgrid .full{grid-column:auto}.weight{font-size:36px}}
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<meta name="description" content="目標体重に向けた自重トレーニング・習慣化アプリ">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>MY WORKOUT</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--accent:#111827;--soft:#eef2ff;--ok:#166534;--warn:#92400e;--danger:#991b1b;--info:#1d4ed8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,"Noto Sans JP",sans-serif;background:var(--bg);color:var(--text)}
+.app{max-width:780px;margin:0 auto;padding:18px 16px 96px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.brand{font-weight:800;letter-spacing:.08em;font-size:18px}.pill{font-size:12px;padding:7px 10px;border-radius:999px;background:var(--soft)}
+.hero{background:var(--accent);color:white;border-radius:24px;padding:22px;box-shadow:0 10px 30px rgba(17,24,39,.15)}.hero .small{opacity:.75;font-size:13px}.weight{font-size:42px;font-weight:800;line-height:1;margin:8px 0}.target{opacity:.86}.bar{height:10px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden;margin:16px 0 10px}.bar span{display:block;height:100%;background:white;border-radius:999px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.stat{background:rgba(255,255,255,.08);border-radius:14px;padding:10px}.stat b{display:block;font-size:17px}.stat small{opacity:.7}
+.section{margin-top:18px}.section h2{font-size:17px;margin:0 0 10px}.grid{display:grid;gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.btn{border:0;border-radius:14px;padding:12px 14px;font-weight:700;cursor:pointer}.primary{background:var(--accent);color:white}.secondary{background:#eef2f7;color:var(--text)}.ghost{background:transparent;color:var(--muted);padding:6px}.danger{background:#fee2e2;color:#991b1b}.btn:disabled{opacity:.5;cursor:not-allowed}
+.workout-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.workout-item:last-child{border-bottom:0}.check{width:22px;height:22px}.exercise{flex:1}.exercise b{display:block}.exercise span{font-size:13px;color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:700}.badge.ok{background:#dcfce7;color:var(--ok)}.badge.info{background:#dbeafe;color:var(--info)}.badge.warn{background:#fef3c7;color:var(--warn)}
+.timer{font-variant-numeric:tabular-nums;font-size:52px;font-weight:800;text-align:center;margin:10px 0 16px}.timer-actions{display:flex;gap:8px}.timer-actions .btn{flex:1}.timer-small{font-size:13px;text-align:center;color:var(--muted)}
+input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:white;font-size:16px}label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}
+.mini{font-size:12px;color:var(--muted)}.progress-wrap{display:flex;align-items:center;gap:10px}.progress{flex:1;height:8px;background:#edf0f4;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;background:#111827}.history-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}.history-row:last-child{border-bottom:0}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:20}.navin{max-width:780px;margin:auto;display:grid;grid-template-columns:repeat(4,1fr);padding:8px 10px}.nav button{border:0;background:none;padding:8px 2px;color:var(--muted);font-weight:700;font-size:12px}.nav button.active{color:var(--text)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:78px;background:#111827;color:#fff;padding:11px 14px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:100}.toast.show{opacity:1}
+.hidden{display:none!important}.overlay{position:fixed;inset:0;background:rgba(15,23,42,.58);display:flex;align-items:center;justify-content:center;padding:18px;z-index:50}.modal{width:min(560px,100%);background:white;border-radius:24px;padding:22px;max-height:90vh;overflow:auto}.modal h2{margin:6px 0 8px;font-size:22px}.modal p{line-height:1.6}.note{background:#fffbeb;border:1px solid #fde68a;color:#78350f;border-radius:14px;padding:12px;font-size:13px;line-height:1.55}.infoBox{background:#eff6ff;border:1px solid #bfdbfe;color:#1e3a8a;border-radius:14px;padding:12px;font-size:13px;line-height:1.55}.week-card.current{border:2px solid #111827}.phase{font-size:12px;color:var(--muted);margin-top:4px}.kpi{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.kpi .card{padding:14px}.kpi b{font-size:24px}.smallChart{width:100%;height:190px}.quote{font-size:15px;line-height:1.6}.seg{display:flex;gap:6px}.seg button{flex:1;border:1px solid var(--line);background:#fff;padding:10px 8px;border-radius:10px;font-size:13px;font-weight:700}.seg button.active{background:#111827;color:#fff;border-color:#111827}
+@media (max-width:520px){.formgrid{grid-template-columns:1fr}.formgrid .full{grid-column:auto}.weight{font-size:36px}.kpi{grid-template-columns:1fr 1fr}}
+</style>
 </head>
 <body>
 <div class="app">
@@ -29,147 +31,127 @@
 
   <section id="home" class="screen">
     <div class="hero">
-      <div class="small">目標体重まで</div>
-      <div id="remaining" class="weight">-- kg</div>
+      <div class="small">目標体重まで</div><div id="remaining" class="weight">-- kg</div>
       <div id="weightLine" class="target">現在 -- kg / 目標 -- kg</div>
-      <div class="bar"><span id="goalBar" style="width:0%"></span></div>
-      <div id="goalPercent" class="small">進捗 --%</div>
-      <div class="stats">
-        <div class="stat"><b id="todayCount">0/0</b><small>今日の種目</small></div>
-        <div class="stat"><b id="weekCount">0/3</b><small>今週の達成</small></div>
-        <div class="stat"><b id="daysLeft">--</b><small>目標までの日数</small></div>
-      </div>
+      <div class="bar"><span id="goalBar" style="width:0%"></span></div><div id="goalPercent" class="small">進捗 --%</div>
+      <div class="stats"><div class="stat"><b id="todayCount">0/0</b><small>今日の種目</small></div><div class="stat"><b id="weekCount">0/3</b><small>今週の達成</small></div><div class="stat"><b id="daysLeft">--</b><small>目標までの日数</small></div></div>
     </div>
 
-    <div class="section">
-      <h2>今日のワークアウト</h2>
-      <div class="card">
-        <div class="row between"><div><b id="todayTitle">--</b><div class="mini" id="todayMeta">--</div></div><button class="btn primary" onclick="startWorkout()">START</button></div>
-        <div id="todayWorkout" style="margin-top:8px"></div>
-      </div>
+    <div class="section"><div class="row between"><h2>今日のワークアウト</h2><span id="phaseBadge" class="badge info">第1週</span></div>
+      <div class="card"><div class="row between"><div><b id="todayTitle">--</b><div class="mini" id="todayMeta">--</div></div><button id="startBtn" class="btn primary" onclick="startWorkout()">START</button></div><div id="todayWorkout" style="margin-top:8px"></div></div>
     </div>
 
-    <div class="section"><div class="note">体重は日々の水分量などでも変動します。数字だけでなく、運動を続けられた日数も一緒に見ていきましょう。</div></div>
+    <div class="section"><div class="card"><div class="row between"><div><b id="coachTitle">今日のコーチ</b><div class="quote" id="coachText" style="margin-top:6px">--</div></div><span id="coachIcon" style="font-size:28px">💬</span></div></div></div>
 
-    <div class="section">
-      <div class="row between"><h2>体重を記録</h2><button class="btn ghost" onclick="showScreen('progress')">履歴を見る →</button></div>
-      <div class="card"><div class="row"><input id="weightInput" type="number" step="0.1" placeholder="例：71.8"><button class="btn primary" onclick="addWeight()">記録</button></div></div>
-    </div>
+    <div class="section"><div class="row between"><h2>体重を記録</h2><button class="btn ghost" onclick="showScreen('progress')">履歴を見る →</button></div><div class="card"><div class="row"><input id="weightInput" type="number" step="0.1" inputmode="decimal" placeholder="例：71.8"><button class="btn primary" onclick="addWeight()">記録</button></div><div id="weightHint" class="mini" style="margin-top:8px">前回記録: --</div></div></div>
+
+    <div class="section"><div class="infoBox"><b>通知について</b><br>本版ではバックグラウンドのプッシュ通知はまだ実装していません。リマインド時刻を設定すると、アプリを開いたときに「今日のワークアウト」を優先表示します。</div></div>
   </section>
 
-  <section id="plan" class="screen hidden">
-    <div class="row between"><h2>週間プラン</h2><button class="btn secondary" onclick="showScreen('settings')">設定</button></div>
-    <div id="planList" class="grid"></div>
-  </section>
+  <section id="plan" class="screen hidden"><div class="row between"><div><h2 style="margin-bottom:0">12週間プラン</h2><div id="phaseSummary" class="phase">--</div></div><button class="btn secondary" onclick="showScreen('settings')">設定</button></div><div id="planList" class="grid" style="margin-top:12px"></div></section>
 
   <section id="progress" class="screen hidden">
     <h2>進捗</h2>
-    <div class="card"><div class="mini">体重推移</div><canvas id="chart" width="700" height="260" style="width:100%;height:220px"></canvas><div id="history" style="margin-top:8px"></div></div>
-    <div class="section"><div class="card"><div class="row between"><b>継続日数</b><b id="streakLarge">0日</b></div><div class="progress-wrap" style="margin-top:10px"><div class="progress"><span id="streakBar" style="width:0%"></span></div><span class="mini">7日</span></div></div></div>
+    <div class="kpi" style="margin-bottom:12px"><div class="card"><div class="mini">7日平均体重</div><b id="avg7">--</b><div id="trend7" class="mini" style="margin-top:4px">--</div></div><div class="card"><div class="mini">今週の達成率</div><b id="adherence">--</b><div id="adherenceNote" class="mini" style="margin-top:4px">--</div></div></div>
+    <div class="card"><div class="mini">体重推移（直近30日）</div><canvas id="chart" class="smallChart" width="700" height="260"></canvas><div id="history" style="margin-top:8px"></div></div>
+    <div class="section"><div class="card"><div class="row between"><b>継続ストリーク</b><b id="streakLarge">0日</b></div><div class="progress-wrap" style="margin-top:10px"><div class="progress"><span id="streakBar" style="width:0%"></span></div><span class="mini">7日</span></div></div></div>
+    <div class="section"><div class="card"><b>今週の振り返り</b><div id="weeklyReview" class="quote" style="margin-top:8px">--</div><button class="btn secondary" style="margin-top:12px;width:100%" onclick="openCheckin(true)">疲労度を記録・調整</button></div></div>
   </section>
 
-  <section id="settings" class="screen hidden">
-    <h2>設定</h2>
-    <div class="card">
-      <div class="formgrid">
-        <div><label>現在体重 (kg)</label><input id="currentWeight" type="number" step="0.1"></div>
-        <div><label>目標体重 (kg)</label><input id="targetWeight" type="number" step="0.1"></div>
-        <div><label>目標日</label><input id="targetDate" type="date"></div>
-        <div><label>週の運動回数</label><select id="freq"><option value="2">週2回</option><option value="3" selected>週3回</option><option value="4">週4回</option><option value="5">週5回</option></select></div>
-        <div class="full"><label>リマインド時刻</label><input id="reminderTime" type="time" value="19:00"></div>
-      </div>
-      <div class="row" style="margin-top:14px"><button class="btn primary" onclick="saveSettings()">保存してプランを更新</button><button class="btn secondary" onclick="requestNotifications()">通知を許可</button></div>
-      <div class="mini" style="margin-top:10px">※ブラウザやOSの設定によって通知の動作は異なります。試作版では、アプリを開いている間のリマインド確認を中心にしています。</div>
-    </div>
+  <section id="settings" class="screen hidden"><h2>設定</h2>
+    <div class="card"><div class="formgrid">
+      <div><label>現在体重 (kg)</label><input id="currentWeight" type="number" step="0.1"></div>
+      <div><label>目標体重 (kg)</label><input id="targetWeight" type="number" step="0.1"></div>
+      <div><label>開始日</label><input id="startDate" type="date"></div>
+      <div><label>目標日</label><input id="targetDate" type="date"></div>
+      <div><label>週の運動回数</label><select id="freq"><option value="2">週2回</option><option value="3">週3回</option><option value="4">週4回</option><option value="5">週5回</option></select></div>
+      <div><label>運動経験</label><select id="level"><option value="beginner">ほぼ初心者</option><option value="regular">少し経験あり</option><option value="advanced">習慣あり</option></select></div>
+      <div><label>1回の時間</label><select id="minutes"><option value="10">10分</option><option value="15">15分</option><option value="20">20分</option><option value="30">30分</option></select></div>
+      <div><label>リマインド時刻</label><input id="reminderTime" type="time"></div>
+    </div><div class="row" style="margin-top:14px"><button class="btn primary" onclick="saveSettings()">保存してプランを更新</button></div>
+    <div class="mini" style="margin-top:10px">プッシュ通知は未実装です。リマインド時刻は次回アプリを開いたときの表示に利用します。</div></div>
+    <div class="section"><div class="card"><div class="row between"><div><b>データ</b><div class="mini">この端末内に保存されます</div></div><button class="btn danger" onclick="resetData()">初期化</button></div></div></div>
   </section>
 
-  <section id="session" class="screen hidden">
-    <div class="row between"><h2 id="sessionTitle">Workout</h2><button class="btn ghost" onclick="stopWorkout()">終了</button></div>
-    <div class="card">
-      <div class="mini" id="sessionExercise"></div>
-      <div class="timer" id="timer">00:30</div>
-      <div class="timer-actions"><button class="btn secondary" onclick="adjustTimer(-10)">-10秒</button><button class="btn primary" id="timerBtn" onclick="toggleTimer()">開始</button><button class="btn secondary" onclick="adjustTimer(10)">+10秒</button></div>
+  <section id="session" class="screen hidden"><div class="row between"><h2 id="sessionTitle">Workout</h2><button class="btn ghost" onclick="stopWorkout()">終了</button></div>
+    <div class="card"><div class="mini" id="sessionExercise">--</div><div class="timer" id="timer">00:30</div><div id="timerSmall" class="timer-small">--</div>
+      <div class="timer-actions" style="margin-top:12px"><button class="btn secondary" onclick="adjustTimer(-10)">-10秒</button><button class="btn primary" id="timerBtn" onclick="toggleTimer()">開始</button><button class="btn secondary" onclick="adjustTimer(10)">+10秒</button></div>
     </div>
-    <div class="card" style="margin-top:12px"><div class="mini">種目</div><div id="sessionList"></div></div>
+    <div class="card" style="margin-top:12px"><div class="mini">今日の種目</div><div id="sessionList"></div></div>
   </section>
 </div>
 
 <div class="nav"><div class="navin"><button id="n-home" class="active" onclick="showScreen('home')">ホーム</button><button id="n-plan" onclick="showScreen('plan')">プラン</button><button id="n-progress" onclick="showScreen('progress')">進捗</button><button id="n-settings" onclick="showScreen('settings')">設定</button></div></div>
 
-<div id="onboarding" class="overlay hidden">
-  <div class="modal">
-    <div class="mini">MY WORKOUTへようこそ</div>
-    <h2>あなた専用の12週間プランを作ります</h2>
-    <p class="mini">目標・運動回数・体力レベルを入力すると、無理のない自重トレーニングのたたき台を作成します。</p>
-    <div class="formgrid">
-      <div><label>現在体重 (kg)</label><input id="obCurrent" type="number" step="0.1" value="75"></div>
-      <div><label>目標体重 (kg)</label><input id="obTarget" type="number" step="0.1" value="68"></div>
-      <div class="full"><label>目標日</label><input id="obDate" type="date"></div>
-      <div><label>週の運動回数</label><select id="obFreq"><option value="2">週2回</option><option value="3" selected>週3回</option><option value="4">週4回</option><option value="5">週5回</option></select></div>
-      <div><label>運動経験</label><select id="obLevel"><option value="beginner">ほぼ初心者</option><option value="regular">少し経験あり</option><option value="advanced">習慣あり</option></select></div>
-      <div class="full"><label>1回の時間</label><select id="obMinutes"><option value="10">10分</option><option value="15" selected>15分</option><option value="20">20分</option><option value="30">30分</option></select></div>
-    </div>
-    <button class="btn primary" style="width:100%;margin-top:14px" onclick="finishOnboarding()">プランを作る</button>
-  </div>
-</div>
+<div id="onboarding" class="overlay hidden"><div class="modal"><div class="mini">MY WORKOUTへようこそ</div><h2>あなた専用の12週間プランを作ります</h2><p class="mini">週の回数・時間・経験に加え、体重の変化と疲労感を見ながら次週の負荷を調整します。</p>
+  <div class="formgrid"><div><label>現在体重 (kg)</label><input id="obCurrent" type="number" step="0.1" value="75"></div><div><label>目標体重 (kg)</label><input id="obTarget" type="number" step="0.1" value="68"></div><div><label>開始日</label><input id="obStart" type="date"></div><div><label>目標日</label><input id="obDate" type="date"></div><div><label>週の運動回数</label><select id="obFreq"><option value="2">週2回</option><option value="3" selected>週3回</option><option value="4">週4回</option><option value="5">週5回</option></select></div><div><label>運動経験</label><select id="obLevel"><option value="beginner">ほぼ初心者</option><option value="regular">少し経験あり</option><option value="advanced">習慣あり</option></select></div><div class="full"><label>1回の時間</label><select id="obMinutes"><option value="10">10分</option><option value="15" selected>15分</option><option value="20">20分</option><option value="30">30分</option></select></div></div>
+  <button class="btn primary" style="width:100%;margin-top:14px" onclick="finishOnboarding()">プランを作る</button></div></div>
+<div id="checkin" class="overlay hidden"><div class="modal"><div class="mini">週次チェックイン</div><h2>今週の疲労感</h2><p class="mini">次週の負荷調整に使います。無理に頑張るためではなく、続けやすくするための入力です。</p><div class="seg" id="fatigueSeg"><button data-v="1">🙂 余裕あり</button><button data-v="2">😐 普通</button><button data-v="3">😮‍💨 少し疲れた</button><button data-v="4">😫 かなり疲れた</button></div><div style="margin-top:14px"><label>今週の達成感</label><select id="satisfaction"><option value="3">よくできた</option><option value="2">まずまず</option><option value="1">あまりできなかった</option></select></div><div class="row" style="margin-top:14px"><button class="btn secondary" onclick="closeCheckin()">あとで</button><button class="btn primary" onclick="saveCheckin()">保存して次週を調整</button></div></div></div>
 <div id="toast" class="toast"></div>
+
 <script>
-const KEY='my-workout-v1';
-const defaultState={settings:{currentWeight:75,targetWeight:68,targetDate:addDays(new Date(),84).toISOString().slice(0,10),freq:3,reminderTime:'19:00'},weights:[],completed:[],plan:[]};
-let state=load();
-let timerSeconds=30,timerId=null,currentExercise=0;
+const KEY='my-workout-v3';
+const OLD_KEY='my-workout-v1';
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
-function load(){try{return {...defaultState,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return structuredClone(defaultState)}}
-function save(){localStorage.setItem(KEY,JSON.stringify(state))}
-function iso(d=new Date()){return d.toISOString().slice(0,10)}
-function dow(){return new Date().getDay()}
-function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1800)}
-function showScreen(name){document.querySelectorAll('.screen').forEach(x=>x.classList.add('hidden'));document.getElementById(name).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));const n=document.getElementById('n-'+name);if(n)n.classList.add('active');if(name==='progress')renderProgress();if(name==='plan')renderPlan();if(name==='settings')fillSettings();}
-function daysUntil(){const t=new Date(state.settings.targetDate+'T23:59:59');return Math.max(0,Math.ceil((t-new Date())/86400000))}
-function completionStreak(){let s=0,d=new Date();for(;;){const k=iso(d);if(state.completed.some(x=>x.date===k)){s++;d.setDate(d.getDate()-1)}else break}return s}
-function exerciseSeed(){return [{name:'スクワット',reps:12,sets:2,sec:0},{name:'腕立て伏せ',reps:8,sets:2,sec:0},{name:'リバースランジ',reps:8,sets:2,sec:0},{name:'プランク',reps:0,sets:2,sec:30}];}
-function buildPlan(){const f=Number(state.settings.freq);let seed=exerciseSeed();let intensity=Math.min(1.35,1+Math.max(0,state.completed.length/12)*0.1);state.plan=[];const labels=['月','火','水','木','金','土','日'];const active=[];if(f===2)active.push(1,5);if(f===3)active.push(1,3,6);if(f===4)active.push(1,2,4,6);if(f===5)active.push(1,2,3,5,6);labels.forEach((day,i)=>{const activeDay=active.includes(i+1);state.plan.push({day,active:activeDay,exercises:activeDay?seed.map(x=>({...x,reps:x.reps?Math.round(x.reps*intensity):0,sec:x.sec?Math.round(x.sec*intensity):0})):[]})});save()}
-function todayPlan(){const labels=['日','月','火','水','木','金','土'];return state.plan[(new Date().getDay())] || {day:labels[new Date().getDay()],active:false,exercises:[]}}
-function renderHome(){const w=state.weights.length?state.weights[state.weights.length-1].weight:Number(state.settings.currentWeight);const s=state.settings;const diff=Math.max(0,w-s.targetWeight);const denom=Math.max(0.1,s.currentWeight-s.targetWeight);const pct=Math.min(100,Math.max(0,Math.round((s.currentWeight-w)/denom*100)));document.getElementById('remaining').textContent=diff.toFixed(1)+' kg';document.getElementById('weightLine').textContent=`現在 ${w.toFixed(1)} kg / 目標 ${Number(s.targetWeight).toFixed(1)} kg`;document.getElementById('goalBar').style.width=pct+'%';document.getElementById('goalPercent').textContent=`進捗 ${pct}%`;const tp=todayPlan();document.getElementById('todayTitle').textContent=tp.active?'今日の15分ワークアウト':'回復・休養日';document.getElementById('todayMeta').textContent=tp.active?'自重 / 初心者向け':'軽いストレッチや散歩がおすすめ';document.getElementById('todayWorkout').innerHTML=tp.active?tp.exercises.map((x,i)=>`<div class="workout-item"><input class="check" type="checkbox" id="c-${i}" ${isTodayExerciseDone(i)?'checked':''} onchange="toggleExercise(${i},this.checked)"><div class="exercise"><b>${x.name}</b><span>${x.sec?x.sec+'秒 × '+x.sets:x.reps+'回 × '+x.sets}</span></div></div>`).join(''):'<div class="mini" style="padding:10px 0">今日は休養日です。余裕があれば10〜20分の散歩を。</div>';document.getElementById('todayCount').textContent=`${todayDoneCount()}/${tp.exercises.length}`;document.getElementById('weekCount').textContent=`${weekDone()}/${s.freq}`;document.getElementById('daysLeft').textContent=daysUntil();const st=completionStreak();document.getElementById('streakPill').textContent=`🔥 ${st}日`;document.getElementById('streakLarge').textContent=st+'日';document.getElementById('streakBar').style.width=Math.min(100,st/7*100)+'%';}
-function isTodayExerciseDone(i){const k=iso();return state.completed.some(x=>x.date===k&&x.type==='exercise'&&x.idx===i)}
-function todayDoneCount(){return state.completed.filter(x=>x.date===iso()&&x.type==='exercise').length}
-function weekDone(){const now=new Date();const day=now.getDay();const start=new Date(now);start.setDate(now.getDate()-(day||7)+1);let count=0;for(let i=0;i<7;i++){const d=new Date(start);d.setDate(start.getDate()+i);if(state.completed.some(x=>x.date===iso(d)&&x.type==='workout'))count++}return count}
-function toggleExercise(i,checked){const k=iso();state.completed=state.completed.filter(x=>!(x.date===k&&x.type==='exercise'&&x.idx===i));if(checked)state.completed.push({date:k,type:'exercise',idx:i});const tp=todayPlan();if(tp.exercises.length&&tp.exercises.every((_,idx)=>state.completed.some(x=>x.date===k&&x.type==='exercise'&&x.idx===idx))&&!state.completed.some(x=>x.date===k&&x.type==='workout')){state.completed.push({date:k,type:'workout'});toast('ワークアウト達成！🔥')}save();renderHome()}
-function renderPlan(){const labels=['月','火','水','木','金','土','日'];document.getElementById('planList').innerHTML=state.plan.map((d,i)=>`<div class="card"><div class="row between"><div><b>${d.day}曜日</b><div class="mini">${d.active?'トレーニング':'回復・休養'}</div></div><span class="pill">${d.active?(d.exercises.reduce((a,x)=>a+(x.reps*x.sets||x.sec*x.sets),0))+'負荷':''}</span></div>${d.active?d.exercises.map(x=>`<div class="workout-item"><div class="exercise"><b>${x.name}</b><span>${x.sec?x.sec+'秒 × '+x.sets:x.reps+'回 × '+x.sets}</span></div></div>`).join(''):'<div class="mini" style="margin-top:10px">軽い散歩やストレッチ。</div>'}</div>`).join('')}
-function fillSettings(){const s=state.settings;document.getElementById('currentWeight').value=s.currentWeight;document.getElementById('targetWeight').value=s.targetWeight;document.getElementById('targetDate').value=s.targetDate;document.getElementById('freq').value=s.freq;document.getElementById('reminderTime').value=s.reminderTime}
-function saveSettings(){state.settings.currentWeight=Number(document.getElementById('currentWeight').value);state.settings.targetWeight=Number(document.getElementById('targetWeight').value);state.settings.targetDate=document.getElementById('targetDate').value;state.settings.freq=Number(document.getElementById('freq').value);state.settings.reminderTime=document.getElementById('reminderTime').value;buildPlan();save();renderAll();toast('設定を保存しました')}
-function addWeight(){const v=Number(document.getElementById('weightInput').value);if(!v)return;state.weights=state.weights.filter(x=>x.date!==iso());state.weights.push({date:iso(),weight:v});state.weights.sort((a,b)=>a.date.localeCompare(b.date));save();document.getElementById('weightInput').value='';renderHome();toast('体重を記録しました')}
-function renderProgress(){const el=document.getElementById('history');el.innerHTML=state.weights.slice().reverse().slice(0,14).map(x=>`<div class="history-row"><span>${x.date}</span><b>${x.weight.toFixed(1)} kg</b></div>`).join('')||'<div class="mini">まだ記録がありません。</div>';drawChart()}
-function drawChart(){const c=document.getElementById('chart'),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);const arr=state.weights.slice(-14);if(arr.length<2){ctx.fillStyle='#6b7280';ctx.font='16px sans-serif';ctx.fillText('2日以上の記録でグラフが表示されます',20,40);return}const vals=arr.map(x=>x.weight),min=Math.min(...vals)-.5,max=Math.max(...vals)+.5;ctx.strokeStyle='#111827';ctx.lineWidth=3;ctx.beginPath();arr.forEach((x,i)=>{const px=30+i*(c.width-60)/(arr.length-1);const py=220-(x.weight-min)/(max-min)*180;i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.stroke();ctx.fillStyle='#111827';arr.forEach((x,i)=>{const px=30+i*(c.width-60)/(arr.length-1);const py=220-(x.weight-min)/(max-min)*180;ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill()})}
-function startWorkout(){const tp=todayPlan();if(!tp.active){toast('今日は休養日です');return}currentExercise=0;showScreen('session');renderSession();}
-function renderSession(){const tp=todayPlan(),e=tp.exercises[currentExercise];document.getElementById('sessionTitle').textContent=`Workout ${currentExercise+1}/${tp.exercises.length}`;document.getElementById('sessionExercise').textContent=`${e.name}  ${e.sec?e.sec+'秒':e.reps+'回'} × ${e.sets}`;timerSeconds=e.sec||30;updateTimer();document.getElementById('sessionList').innerHTML=tp.exercises.map((x,i)=>`<div class="history-row"><span>${i===currentExercise?'▶ ':''}${x.name}</span><span>${x.sec?x.sec+'秒':x.reps+'回'} × ${x.sets}</span></div>`).join('')}
+function localISO(d=new Date()){const z=new Date(d.getTime()-d.getTimezoneOffset()*60000);return z.toISOString().slice(0,10)}
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function defaultState(){const start=new Date();return {version:3,settings:{currentWeight:75,targetWeight:68,startDate:localISO(start),targetDate:localISO(addDays(start,84)),freq:3,level:'beginner',minutes:15,reminderTime:'19:00'},weights:[],completed:[],plan:[],checkins:[],weekAdjustments:{},onboarded:false,lastOpen:localISO(),lastReminderShown:''}}
+function load(){try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);if(!raw)return defaultState();const x=JSON.parse(raw);const d=defaultState();return {...d,...x,settings:{...d.settings,...(x.settings||{})},weights:x.weights||[],completed:x.completed||[],plan:x.plan||[],checkins:x.checkins||[],weekAdjustments:x.weekAdjustments||{}}}catch(e){return defaultState()}}
+let state=load();
+let timerSeconds=30,timerId=null,currentExercise=0,currentSet=1,checkinFatigue=2;
+function save(){state.lastOpen=localISO();localStorage.setItem(KEY,JSON.stringify(state))}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),1900)}
+function showScreen(name){document.querySelectorAll('.screen').forEach(x=>x.classList.add('hidden'));document.getElementById(name).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));const n=document.getElementById('n-'+name);if(n)n.classList.add('active');if(name==='progress')renderProgress();if(name==='plan')renderPlan();if(name==='settings')fillSettings()}
+function daysUntil(){if(!state.settings.targetDate)return 0;const t=new Date(state.settings.targetDate+'T23:59:59');return Math.max(0,Math.ceil((t-new Date())/86400000))}
+function startDate(){return new Date(state.settings.startDate+'T00:00:00')}
+function weekNumber(){const diff=Math.max(0,Math.floor((Date.now()-startDate().getTime())/604800000));return Math.min(12,diff+1)}
+function phaseInfo(){const w=weekNumber();if(w<=4)return {name:'習慣化',text:'フォームと継続を優先'};if(w<=8)return {name:'強化',text:'回数・秒数を少しずつ増やす'};if(w<=11)return {name:'仕上げ',text:'無理のない範囲で負荷を維持・微増'};return {name:'定着',text:'成果を確認し、次の目標へ'}}
+function dayIndexMon(){const d=new Date().getDay();return d===0?6:d-1}
+function activeDays(freq){return ({2:[0,3],3:[0,2,4],4:[0,1,3,5],5:[0,1,2,4,5]})[freq]||[0,2,4]}
+const exerciseBank={A:[{name:'スクワット',type:'reps',base:10},{name:'壁・膝つき腕立て',type:'reps',base:8},{name:'ヒップリフト',type:'reps',base:10},{name:'プランク',type:'sec',base:20}],B:[{name:'リバースランジ',type:'reps',base:6},{name:'腕立て伏せ',type:'reps',base:6},{name:'バードドッグ',type:'reps',base:6},{name:'サイドプランク',type:'sec',base:15}],C:[{name:'ワイドスクワット',type:'reps',base:10},{name:'テンポ腕立て',type:'reps',base:6},{name:'グルートブリッジ',type:'reps',base:12},{name:'デッドバグ',type:'reps',base:6}]};
+function weekAdjustment(w){return state.weekAdjustments[w]||0}
+function baseFactor(){const l=state.settings.level;return l==='advanced'?1.25:l==='regular'?1.1:1}
+function phaseFactor(w){if(w<=2)return .9;if(w<=4)return 1;if(w<=8)return 1.08;if(w<=11)return 1.16;return 1.08}
+function makeWorkout(code,w){const minutes=Number(state.settings.minutes)||15;const sets=minutes<=10?2:minutes<=20?2:3;let factor=baseFactor()*phaseFactor(w);factor+=weekAdjustment(w)*.08;return exerciseBank[code].map(e=>{let v=Math.max(1,Math.round(e.base*factor));if(e.type==='sec')v=Math.max(10,Math.round(e.base*factor/5)*5);return {...e,sets}}).concat(minutes>=30?[{name:'マウンテンクライマー',type:'reps',base:12,sets:2}]:[]).map(e=>e.type==='sec'?{...e,sec:e.base,reps:0}:{...e,reps:e.base,sec:0})}
+function buildPlan(){const w=weekNumber(),freq=Number(state.settings.freq),days=activeDays(freq);const codes=['A','B','C','A','B'];state.plan=Array.from({length:7},(_,i)=>{const active=days.includes(i);const code=codes[i%codes.length];return {day:i,active,code,exercises:active?makeWorkout(code,w):[]}});save()}
+function dateForPlan(dayIndex){const now=new Date();const current=dayIndexMon();const start=new Date(now);start.setDate(now.getDate()-current);const d=new Date(start);d.setDate(start.getDate()+dayIndex);return localISO(d)}
+function todayPlan(){const idx=dayIndexMon();const p=state.plan[idx];if(!p||state.plan.length!==7)buildPlan();return state.plan[idx]}
+function completionFor(date){return state.completed.some(x=>x.date===date&&x.type==='workout')}
+function todayDoneCount(){return state.completed.filter(x=>x.date===localISO()&&x.type==='exercise').length}
+function doneExercise(i){return state.completed.some(x=>x.date===localISO()&&x.type==='exercise'&&x.idx===i)}
+function toggleExercise(i,checked){const k=localISO();state.completed=state.completed.filter(x=>!(x.date===k&&x.type==='exercise'&&x.idx===i));if(checked)state.completed.push({date:k,type:'exercise',idx:i});const tp=todayPlan();if(tp.exercises.length&&tp.exercises.every((_,idx)=>doneExercise(idx))&&!completionFor(k))state.completed.push({date:k,type:'workout'});save();renderHome();renderProgress()}
+function weekDates(){const idx=dayIndexMon();const start=new Date();start.setDate(start.getDate()-idx);return Array.from({length:7},(_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return localISO(d)})}
+function weekDone(){return weekDates().filter(completionFor).length}
+function adherencePct(){return Math.round(weekDone()/Number(state.settings.freq)*100)}
+function completionStreak(){let s=0,d=new Date();while(true){const k=localISO(d);if(completionFor(k)){s++;d.setDate(d.getDate()-1)}else break}return s}
+function weightValue(){return state.weights.length?state.weights[state.weights.length-1].weight:Number(state.settings.currentWeight)}
+function last7Avg(){const arr=state.weights.slice(-7).map(x=>x.weight);return arr.length?arr.reduce((a,b)=>a+b,0)/arr.length:weightValue()}
+function trend7(){if(state.weights.length<2)return null;const a=last7Avg();const prev=state.weights.slice(-14,-7).map(x=>x.weight);if(!prev.length)return null;const b=prev.reduce((x,y)=>x+y,0)/prev.length;return a-b}
+function weightProgress(){const s=state.settings,w=weightValue();const denom=Number(s.currentWeight)-Number(s.targetWeight);if(denom<=0)return 100;return Math.max(0,Math.min(100,Math.round(((Number(s.currentWeight)-w)/denom)*100)))}
+function coachMessage(){const ad=adherencePct(),tr=trend7(),fat=state.checkins.length?state.checkins[state.checkins.length-1].fatigue:2;if(fat>=4)return ['今日は負荷を上げる日ではありません。次週は少し軽めに調整します。','🧘'];if(ad>=100&&tr!==null&&tr<=0)return ['予定どおり続けられています。次週は小さく負荷を上げます。','🔥'];if(ad<70)return ['全部できなくても問題ありません。まずは次回の1回を優先しましょう。','🌱'];return ['完璧より継続です。今日のメニューを一つずつ終わらせましょう。','💬']}
+function renderHome(){if(!state.plan.length)buildPlan();const s=state.settings,w=weightValue(),diff=Math.max(0,w-Number(s.targetWeight));document.getElementById('remaining').textContent=diff.toFixed(1)+' kg';document.getElementById('weightLine').textContent=`現在 ${w.toFixed(1)} kg / 目標 ${Number(s.targetWeight).toFixed(1)} kg`;document.getElementById('goalBar').style.width=weightProgress()+'%';document.getElementById('goalPercent').textContent=`進捗 ${weightProgress()}%`;const tp=todayPlan(),p=phaseInfo();document.getElementById('phaseBadge').textContent=`第${weekNumber()}週・${p.name}`;document.getElementById('todayTitle').textContent=tp.active?`${p.name}ワークアウト ${tp.code}`:'回復・休養日';document.getElementById('todayMeta').textContent=tp.active?`${p.text} / 約${s.minutes}分`:'軽い散歩やストレッチでOK';document.getElementById('startBtn').disabled=!tp.active;document.getElementById('todayWorkout').innerHTML=tp.active?tp.exercises.map((x,i)=>`<div class="workout-item"><input class="check" type="checkbox" ${doneExercise(i)?'checked':''} onchange="toggleExercise(${i},this.checked)"><div class="exercise"><b>${x.name}</b><span>${x.type==='sec'?x.sec+'秒':x.reps+'回'} × ${x.sets}</span></div></div>`).join(''):'<div class="mini" style="padding:10px 0">今日は休養日です。余裕があれば10〜20分の散歩を。</div>';document.getElementById('todayCount').textContent=`${todayDoneCount()}/${tp.exercises.length}`;document.getElementById('weekCount').textContent=`${weekDone()}/${s.freq}`;document.getElementById('daysLeft').textContent=daysUntil();const st=completionStreak();document.getElementById('streakPill').textContent=`🔥 ${st}日`;document.getElementById('streakLarge').textContent=st+'日';document.getElementById('streakBar').style.width=Math.min(100,st/7*100)+'%';const cm=coachMessage();document.getElementById('coachText').textContent=cm[0];document.getElementById('coachIcon').textContent=cm[1];const last=state.weights.length?state.weights[state.weights.length-1]:null;document.getElementById('weightHint').textContent=last?`前回記録: ${last.date} / ${last.weight.toFixed(1)} kg`:'まだ体重記録がありません';}
+function renderPlan(){if(!state.plan.length)buildPlan();const w=weekNumber(),p=phaseInfo();document.getElementById('phaseSummary').textContent=`現在は第${w}週「${p.name}」：${p.text}`;document.getElementById('planList').innerHTML=state.plan.map((d,i)=>{const cur=i===dayIndexMon();return `<div class="card week-card ${cur?'current':''}"><div class="row between"><div><b>${['月','火','水','木','金','土','日'][i]}曜日</b><div class="mini">${d.active?'トレーニング':'回復・休養'} ${cur?'・今日':''}</div></div>${d.active?`<span class="badge ${cur?'info':'ok'}">${d.code} Day</span>`:''}</div>${d.active?d.exercises.map(x=>`<div class="workout-item"><div class="exercise"><b>${x.name}</b><span>${x.type==='sec'?x.sec+'秒':x.reps+'回'} × ${x.sets}</span></div></div>`).join(''):'<div class="mini" style="margin-top:10px">軽い散歩やストレッチ。</div>'}</div>`}).join('')}
+function renderProgress(){const avg=last7Avg();const tr=trend7();document.getElementById('avg7').textContent=avg.toFixed(1)+' kg';document.getElementById('trend7').textContent=tr===null?'まだ比較データなし':`${tr>0?'+':''}${tr.toFixed(1)} kg（前7日平均比）`;document.getElementById('adherence').textContent=adherencePct()+'%';document.getElementById('adherenceNote').textContent=`${weekDone()} / ${state.settings.freq} 回`;const hist=document.getElementById('history');hist.innerHTML=state.weights.slice().reverse().slice(0,14).map(x=>`<div class="history-row"><span>${x.date}</span><b>${x.weight.toFixed(1)} kg</b></div>`).join('')||'<div class="mini">まだ記録がありません。</div>';drawChart();const review=weeklyReview();document.getElementById('weeklyReview').textContent=review}
+function weeklyReview(){const a=adherencePct(),fat=state.checkins.length?state.checkins[state.checkins.length-1].fatigue:null;if(fat>=4)return '疲労感が高めでした。次週は無理に増やさず、まず続けられる量を優先します。';if(a>=100)return '今週の予定回数を達成しました。次週は小さく負荷を上げる設定です。';if(a>=70)return '概ね予定どおりです。できなかった日があっても、次の回から再開しましょう。';return '今週は達成率が低めでした。次週は負荷を下げて再開しやすくします。'}
+function drawChart(){const c=document.getElementById('chart'),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);const arr=state.weights.slice(-30);if(arr.length<2){ctx.fillStyle='#6b7280';ctx.font='16px sans-serif';ctx.fillText('2日以上の記録でグラフが表示されます',20,40);return}const vals=arr.map(x=>x.weight),min=Math.min(...vals)-.5,max=Math.max(...vals)+.5;ctx.strokeStyle='#111827';ctx.lineWidth=3;ctx.beginPath();arr.forEach((x,i)=>{const px=30+i*(c.width-60)/(arr.length-1);const py=230-(x.weight-min)/(max-min)*190;i?ctx.lineTo(px,py):ctx.moveTo(px,py)});ctx.stroke();ctx.fillStyle='#111827';arr.forEach((x,i)=>{const px=30+i*(c.width-60)/(arr.length-1);const py=230-(x.weight-min)/(max-min)*190;ctx.beginPath();ctx.arc(px,py,4,0,Math.PI*2);ctx.fill()})}
+function fillSettings(){const s=state.settings;for(const [id,v] of [['currentWeight',s.currentWeight],['targetWeight',s.targetWeight],['startDate',s.startDate],['targetDate',s.targetDate],['freq',s.freq],['level',s.level],['minutes',s.minutes],['reminderTime',s.reminderTime]])document.getElementById(id).value=v}
+function saveSettings(){const oldStart=state.settings.startDate;state.settings.currentWeight=Number(document.getElementById('currentWeight').value)||state.settings.currentWeight;state.settings.targetWeight=Number(document.getElementById('targetWeight').value)||state.settings.targetWeight;state.settings.startDate=document.getElementById('startDate').value||oldStart;state.settings.targetDate=document.getElementById('targetDate').value;state.settings.freq=Number(document.getElementById('freq').value);state.settings.level=document.getElementById('level').value;state.settings.minutes=Number(document.getElementById('minutes').value);state.settings.reminderTime=document.getElementById('reminderTime').value;buildPlan();save();renderAll();toast('設定を保存しました')}
+function addWeight(){const v=Number(document.getElementById('weightInput').value);if(!v||v<20||v>300){toast('体重を確認してください');return}const k=localISO();state.weights=state.weights.filter(x=>x.date!==k);state.weights.push({date:k,weight:v});state.weights.sort((a,b)=>a.date.localeCompare(b.date));save();document.getElementById('weightInput').value='';renderAll();renderProgress();toast('体重を記録しました')}
+function startWorkout(){const tp=todayPlan();if(!tp.active){toast('今日は休養日です');return}currentExercise=0;currentSet=1;showScreen('session');renderSession()}
+function renderSession(){const tp=todayPlan(),e=tp.exercises[currentExercise];document.getElementById('sessionTitle').textContent=`Workout ${currentExercise+1}/${tp.exercises.length}`;document.getElementById('sessionExercise').textContent=`${e.name}  ${e.type==='sec'?e.sec+'秒':e.reps+'回'} × ${e.sets}`;timerSeconds=e.type==='sec'?e.sec:45;document.getElementById('timerSmall').textContent=`セット ${currentSet}/${e.sets} ・ ${e.type==='sec'?'キープ':'ゆっくり実施後に休憩'}`;updateTimer();document.getElementById('sessionList').innerHTML=tp.exercises.map((x,i)=>`<div class="history-row"><span>${i===currentExercise?'▶ ':''}${x.name}</span><span>${x.type==='sec'?x.sec+'秒':x.reps+'回'} × ${x.sets}</span></div>`).join('')}
 function updateTimer(){document.getElementById('timer').textContent=`00:${String(Math.max(0,timerSeconds)).padStart(2,'0')}`}
-function toggleTimer(){if(timerId){clearInterval(timerId);timerId=null;document.getElementById('timerBtn').textContent='再開';return}document.getElementById('timerBtn').textContent='停止';timerId=setInterval(()=>{timerSeconds--;updateTimer();if(timerSeconds<=0){clearInterval(timerId);timerId=null;toast('セット終了！次のセットへ');advanceExercise()}},1000)}
+function toggleTimer(){if(timerId){clearInterval(timerId);timerId=null;document.getElementById('timerBtn').textContent='再開';return}document.getElementById('timerBtn').textContent='停止';timerId=setInterval(()=>{timerSeconds--;updateTimer();if(timerSeconds<=0){clearInterval(timerId);timerId=null;advanceSet()}},1000)}
 function adjustTimer(n){timerSeconds=Math.max(5,timerSeconds+n);updateTimer()}
-function advanceExercise(){const tp=todayPlan();if(currentExercise<tp.exercises.length-1){currentExercise++;renderSession()}else{state.completed=state.completed.filter(x=>!(x.date===iso()&&x.type==='workout'));state.completed.push({date:iso(),type:'workout'});save();toast('今日のワークアウト達成！');showScreen('home');renderHome()}}
+function advanceSet(){const tp=todayPlan(),e=tp.exercises[currentExercise];toast(`セット ${currentSet} 終了`);if(currentSet<e.sets){currentSet++;timerSeconds=20;document.getElementById('timerSmall').textContent=`休憩 20秒 → セット ${currentSet}/${e.sets}`;updateTimer();return}if(currentExercise<tp.exercises.length-1){currentExercise++;currentSet=1;renderSession();return}state.completed=state.completed.filter(x=>!(x.date===localISO()&&x.type==='workout'));state.completed.push({date:localISO(),type:'workout'});save();showScreen('home');renderHome();toast('今日のワークアウト達成！🔥')}
 function stopWorkout(){if(timerId)clearInterval(timerId);timerId=null;showScreen('home')}
-function requestNotifications(){if(!('Notification' in window)){toast('このブラウザは通知に対応していません');return}Notification.requestPermission().then(p=>toast(p==='granted'?'通知を許可しました':'通知が許可されませんでした'))}
-function reminderCheck(){const [h,m]=state.settings.reminderTime.split(':').map(Number);const now=new Date();if(now.getHours()===h&&now.getMinutes()===m&&todayPlan().active&&!state.completed.some(x=>x.date===iso()&&x.type==='workout')&&Notification.permission==='granted'){new Notification('今日のワークアウト',{body:'15分だけ、今日のトレーニングを始めましょう！'})}}
-function finishOnboarding(){
-  state.settings.currentWeight=Number(document.getElementById('obCurrent').value)||75;
-  state.settings.targetWeight=Number(document.getElementById('obTarget').value)||68;
-  state.settings.targetDate=document.getElementById('obDate').value||addDays(new Date(),84).toISOString().slice(0,10);
-  state.settings.freq=Number(document.getElementById('obFreq').value)||3;
-  state.settings.level=document.getElementById('obLevel').value||'beginner';
-  state.settings.minutes=Number(document.getElementById('obMinutes').value)||15;
-  state.settings.reminderTime=state.settings.reminderTime||'19:00';
-  buildPlan(); save(); document.getElementById('onboarding').classList.add('hidden'); renderAll(); toast('あなたのプランを作成しました');
-}
-function maybeOnboarding(){
-  if(!localStorage.getItem(KEY+'_onboarded')){
-    document.getElementById('obDate').value=addDays(new Date(),84).toISOString().slice(0,10);
-    document.getElementById('onboarding').classList.remove('hidden');
-    localStorage.setItem(KEY+'_onboarded','1');
-  }
-}
-function buildPlan(){const f=Number(state.settings.freq);const level=state.settings.level||'beginner';const multiplier=level==='advanced'?1.25:level==='regular'?1.1:1;const minutes=Number(state.settings.minutes||15);let seed=[{name:'スクワット',reps:10,sets:2,sec:0},{name:'腕立て伏せ',reps:6,sets:2,sec:0},{name:'リバースランジ',reps:6,sets:2,sec:0},{name:'プランク',reps:0,sets:2,sec:25}];if(minutes>=20)seed.push({name:'ヒップリフト',reps:12,sets:2,sec:0});if(minutes>=30)seed.push({name:'マウンテンクライマー',reps:16,sets:2,sec:0});seed=seed.map(x=>({...x,reps:x.reps?Math.max(1,Math.round(x.reps*multiplier)):0,sec:x.sec?Math.max(10,Math.round(x.sec*multiplier)):0}));let active=[];if(f===2)active=[1,5];if(f===3)active=[1,3,6];if(f===4)active=[1,2,4,6];if(f===5)active=[1,2,3,5,6];const days=['月','火','水','木','金','土','日'];state.plan=days.map((day,i)=>({day,active:active.includes(i+1),exercises:active.includes(i+1)?seed:[]}));save()}
-function renderAll(){if(!state.plan.length)buildPlan();renderHome()}
-renderAll();fillSettings();maybeOnboarding();setInterval(reminderCheck,60000);if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+function openCheckin(show=true){document.getElementById('checkin').classList.toggle('hidden',!show);document.querySelectorAll('#fatigueSeg button').forEach(b=>{b.classList.toggle('active',Number(b.dataset.v)===checkinFatigue);b.onclick=()=>{checkinFatigue=Number(b.dataset.v);document.querySelectorAll('#fatigueSeg button').forEach(x=>x.classList.toggle('active',Number(x.dataset.v)===checkinFatigue))}})}
+function closeCheckin(){document.getElementById('checkin').classList.add('hidden')}
+function saveCheckin(){const w=weekNumber(),adj=checkinFatigue>=4?-1:checkinFatigue===1?1:0;state.weekAdjustments[w+1]=adj;state.checkins.push({week:w,fatigue:checkinFatigue,satisfaction:Number(document.getElementById('satisfaction').value),date:localISO()});buildPlan();save();closeCheckin();renderAll();renderProgress();toast(adj<0?'次週は負荷を少し下げます':adj>0?'次週は少し負荷を上げます':'次週は現在の負荷を維持します')}
+function resetData(){if(!confirm('この端末に保存した体重・履歴・設定を初期化しますか？'))return;localStorage.removeItem(KEY);localStorage.removeItem(OLD_KEY);location.reload()}
+function finishOnboarding(){const current=Number(document.getElementById('obCurrent').value);const target=Number(document.getElementById('obTarget').value);if(!current||!target||current<=target){toast('現在体重と目標体重を確認してください');return}state.settings.currentWeight=current;state.settings.targetWeight=target;state.settings.startDate=document.getElementById('obStart').value||localISO();state.settings.targetDate=document.getElementById('obDate').value||localISO(addDays(new Date(),84));state.settings.freq=Number(document.getElementById('obFreq').value);state.settings.level=document.getElementById('obLevel').value;state.settings.minutes=Number(document.getElementById('obMinutes').value);state.onboarded=true;buildPlan();save();document.getElementById('onboarding').classList.add('hidden');renderAll();openCheckin(true);closeCheckin();toast('12週間プランを作成しました')}
+function maybeOnboarding(){if(!state.onboarded){document.getElementById('obStart').value=localISO();document.getElementById('obDate').value=localISO(addDays(new Date(),84));document.getElementById('onboarding').classList.remove('hidden')}}
+function renderAll(){if(!state.plan.length||state.plan.length!==7)buildPlan();renderHome()}
+function firstOpenReminder(){const k=localISO();if(state.lastReminderShown===k)return;const [h,m]=(state.settings.reminderTime||'19:00').split(':').map(Number);const now=new Date();const scheduled=h*60+m;const current=now.getHours()*60+now.getMinutes();if(current>=scheduled&&todayPlan().active&&!completionFor(k)){state.lastReminderShown=k;save();setTimeout(()=>toast(`今日はまだ未完了です。${state.settings.reminderTime}の予定でした。`),700)}}
+renderAll();fillSettings();maybeOnboarding();firstOpenReminder();if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
-</body>
-</html>
+</body></html>

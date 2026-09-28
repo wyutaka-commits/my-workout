@@ -1,10 +1,9 @@
 {
   "name": "MY WORKOUT",
   "short_name": "MY WORKOUT",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f5f7fb",
   "theme_color": "#111827",
-  "lang": "ja",
-  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml"}]
+  "lang": "ja"
 }
