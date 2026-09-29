@@ -1,19 +1,25 @@
-# MY WORKOUT v3
+# MY WORKOUT v4
 
-GitHub Pages向けのPWAです。
+## Web版: GitHub Pages
+`web/` の5ファイルを、現在利用しているGitHub Pages Repositoryのルートへ差し替えてください。
 
-## v3の主な改善
-- 12週間を「習慣化→強化→仕上げ→定着」の4段階に分け、週ごとに負荷を段階調整
-- A/B/Cの3種類の自重ワークアウトで同じ種目の繰り返しを減らす
-- 週の達成率に応じて翌週の負荷を自動調整
-- 週次チェックイン（疲労感・達成感）で翌週の負荷を微調整
-- 体重は7日平均と前7日平均との差を表示
-- 12週間の開始日を基準に現在週を自動判定
-- トレーニング中にセットごとのタイマーと休憩を管理
-- 体重・運動履歴は端末内（localStorage）に保存
-- v1の保存データを可能な範囲で引き継ぎ
-- バックグラウンドのプッシュ通知は未実装
+追加・改善した機能:
+- トレーニング中の日本語音声ガイド（開始、残り5/3/2/1秒、セット終了）
+- セット中の回数カウンター
+- 健康ダッシュボード（歩数、睡眠、摂取/活動エネルギー）
+- 食事の簡易手入力
+- v2/v3のlocalStorageデータ移行
+- Apple Health連携のWeb-to-native受け口
 
-## GitHub Pages更新
-Repositoryのファイルをこのフォルダの内容で置き換えてください。
-Service Workerのキャッシュが残る場合は、Safariでページを再読み込みするか、ホーム画面のアプリを一度閉じて再起動してください。
+## iPhoneネイティブ版
+`ios/` にSwiftUI + WKWebView + HealthKitの橋渡しコードがあります。
+
+GitHub Pages版だけではApple Healthを直接読めません。HealthKitはiOSネイティブアプリのHealthKit capabilityが必要です。XcodeでiOS Appを作り、`ContentView.swift` / `HealthKitBridge.swift` を追加し、HealthKit capabilityとInfo.plistの説明文を設定してください。
+
+ネイティブ版はGitHub PagesのWeb UIを同じまま表示し、HealthKitから読み取ったデータをJavaScriptの `window.receiveHealthSummary(...)` に渡します。
+
+## 今後の拡張
+- HealthKitへのワークアウト書き込み
+- ローカル通知によるトレーニングリマインド
+- Apple Watch対応
+- 食事目標と体重トレンドを合わせた日次フィードバック
